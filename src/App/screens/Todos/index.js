@@ -33,7 +33,7 @@ class Todos extends React.Component {
     return (
       <section className='pa3 pa5-ns'>
         <AddTodo onSubmit={({todo}, _, {reset}) => {
-          this.props.addTodo(todo)
+          this.props.addTodo(todo,this.props.params.id)
           reset()
         }} />
 
@@ -77,7 +77,7 @@ export default connect(
     todos: getEntities('todos')(state)
   }),
   dispatch => ({
-    addTodo: (text) => dispatch(actions.submitEntity({ text }, {type: 'todos'})),
+    addTodo: (text,id_of_list) => dispatch(actions.submitEntity({ text,id_of_list }, {type: 'todos'})),
     toggleTodo: (todo, completed) => dispatch(actions.updateEntity({ ...todo, completed }, {type: 'todos'}))
   })
 )(Todos)
