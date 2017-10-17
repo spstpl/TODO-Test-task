@@ -8,18 +8,23 @@ const sortByDate = (arr) => arr.sort((a, b) => {
   return new Date(b.createdAt) - new Date(a.createdAt)
 })
 
-const TodoList = ({ todos, toggleTodo, selectedOption }) => {
+const TodoList = ({ todos, toggleTodo, selectedOption,id_of_list }) => {
+  
+  todos = todos.filter(function( obj ) {
+      return obj.id_of_list == id_of_list;
+    });
+
   const sortedTodos = todos && todos[0] ? sortByDate(todos) : null
 
   if(selectedOption === 'CompletedTodos'){
     todos = todos.filter(function( obj ) {
-      return obj.completed == true;
+      return obj.completed == true && obj.id_of_list == id_of_list;
     });
   }
 
   if(selectedOption === 'InProgressTodos'){
     todos = todos.filter(function( obj ) {
-        return obj.completed == false;
+        return obj.completed == false && obj.id_of_list == id_of_list;
     });
   }
 

@@ -9,7 +9,13 @@ const sortByDate = (arr) => arr.sort((a, b) => {
 })
 
 const ListList = ({ lists, toggleList, showTodos }) => {
+
+  
   const sortedLists = lists && lists[0] ? sortByDate(lists) : null
+
+  
+  // const sortedLists2 = sortedLists.slice().reverse();
+
 
   return (
     <ul className='list pl0 ml0 center mw6 ba b--light-silver br2'>
@@ -20,7 +26,7 @@ const ListList = ({ lists, toggleList, showTodos }) => {
             {...list}
             isLast={(lists.length - 1) === i}
             showTodos={showTodos}
-            id={i}
+            id={lists.length - i}
           />
         )
         : <p className='ph3 pv3 tc'>No lists found</p>

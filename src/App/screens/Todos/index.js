@@ -62,7 +62,7 @@ class Todos extends React.Component {
       </form>
 
       <h1 className='f4 bold center mw6'>All Todos</h1>
-      <TodoList todos={this.props.todos} toggleTodo={this.props.toggleTodo} selectedOption={this.state.selectedOption}/>
+      <TodoList todos={this.props.todos} toggleTodo={this.props.toggleTodo} selectedOption={this.state.selectedOption} id_of_list={this.props.params.id}/>
     </section>
     )
   } 
