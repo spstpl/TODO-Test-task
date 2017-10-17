@@ -12,10 +12,13 @@ import ListList from './components/ListList'
 class Lists extends React.Component {
 
   render(){
+
+   let len_of_lists = this.props.lists.length
+
     return (
       <section className='pa3 pa5-ns'>
         <AddList  onSubmit={({list}, _, {reset}) => {
-          this.props.addList(list)
+          this.props.addList(list,len_of_lists)
           reset()
         }} />
 
@@ -35,7 +38,7 @@ export default connect(
     lists: getEntities('lists')(state)
   }),
   dispatch => ({
-    addList: (name) => dispatch(actions.submitEntity({ name }, {type: 'lists'})),
+    addList: (name,len_of_lists) => dispatch(actions.submitEntity({ name,len_of_lists }, {type: 'lists'})),
     showTodos: (list) => dispatch(actions.fetchEntity({ list }, {type: 'todos'}))
   })
 )(Lists)

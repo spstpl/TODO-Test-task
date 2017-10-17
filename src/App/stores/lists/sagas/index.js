@@ -32,7 +32,7 @@ export function* addList () {
       console.log("scacsascascscasca", action.payload)
       const list = {
         ...action.payload,
-        listID: 1 // Change this to support multiple lists
+        listID: action.payload.len_of_lists // Change this to support multiple lists
       }
 
       const response = yield call(api.post, '/lists', {...list})
